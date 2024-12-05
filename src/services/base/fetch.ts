@@ -4,7 +4,7 @@ export async function fetchWrapper<T = unknown>(
     body: object
   }
 ): Promise<T> {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/${input}`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${input}`, {
     ...init,
     body: init?.body ? JSON.stringify(init.body) : undefined,
     headers: {
