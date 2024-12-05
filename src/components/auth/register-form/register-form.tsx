@@ -92,7 +92,7 @@ export function RegisterForm() {
         <div className="flex gap-2 items-center justify-center">
           <p className="text-sm">Já tem uma conta?</p>
           <Button variant="link" className="pl-0" asChild>
-            <Link href="/auth/register">Entrar</Link>
+            <Link href="/auth/login">Entrar</Link>
           </Button>
         </div>
       </form>
