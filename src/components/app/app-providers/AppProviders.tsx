@@ -1,6 +1,6 @@
 'use client'
 
-import { ThemeProvider } from '@/components/theme'
+import { ThemeProvider } from '@/providers/theme'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PropsWithChildren } from 'react'
 
