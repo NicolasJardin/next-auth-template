@@ -12,15 +12,12 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
-import { Separator } from '@/components/ui/separator'
 import { useCreateUser } from '@/mutations/users'
 import { registerSchema } from '@/schemas/auth'
 import type { RegisterFormType } from '@/types/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { FaFacebookF } from 'react-icons/fa'
-import { GrGoogle } from 'react-icons/gr'
 
 export function RegisterForm() {
   const form = useForm<RegisterFormType>({
@@ -41,49 +38,52 @@ export function RegisterForm() {
         className="flex flex-col gap-4"
         onSubmit={form.handleSubmit(data => createUser(data))}
       >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nome completo*</FormLabel>
-              <FormControl>
-                <Input size={300} type="text" placeholder="Digite seu nome completo" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <fieldset className="flex flex-col gap-4">
+          <legend className="sr-only">Campos de registro</legend>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nome completo*</FormLabel>
+                <FormControl>
+                  <Input size={300} type="text" placeholder="Digite seu nome completo" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email*</FormLabel>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email*</FormLabel>
 
-              <FormControl>
-                <Input type="email" placeholder="Digite seu email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormControl>
+                  <Input type="email" placeholder="Digite seu email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Senha*</FormLabel>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Senha*</FormLabel>
 
-              <FormControl>
-                <PasswordInput placeholder="Crie uma senha" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormControl>
+                  <PasswordInput placeholder="Crie uma senha" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </fieldset>
 
         <LoadingButton isLoading={isPending} type="submit">
           Cadastre-se

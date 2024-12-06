@@ -5,7 +5,7 @@ import { GrGoogle } from 'react-icons/gr'
 
 export default function Register() {
   return (
-    <div className="flex flex-col max-w-screen-sm">
+    <section className="flex flex-col max-w-screen-sm">
       <h1 className="text-2xl font-semibold tracking-wide">Crie sua conta</h1>
 
       <Button variant="outline" type="button" className="mt-8">
@@ -13,7 +13,10 @@ export default function Register() {
         Entrar com o Google
       </Button>
 
-      <div className="flex gap-2 items-center justify-center mt-4">
+      <div
+        className="flex gap-2 items-center justify-center mt-4"
+        aria-label="Separador entre métodos de registro"
+      >
         <Separator className="w-[45%]" />
         <p className="font-medium text-gray-500 text-sm">OU</p>
         <Separator className="w-[45%]" />
@@ -22,6 +25,6 @@ export default function Register() {
       <div className="mt-4">
         <RegisterForm />
       </div>
-    </div>
+    </section>
   )
 }

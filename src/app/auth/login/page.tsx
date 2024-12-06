@@ -8,12 +8,10 @@ export default function Login() {
     <section className="flex flex-col max-w-screen-sm">
       <h1 className="text-2xl font-semibold tracking-wide">Entre em sua conta</h1>
 
-      <article>
-        <Button variant="outline" type="button" className="mt-8">
-          <GrGoogle className="mr-2 h-4 w-4" />
-          Entrar com o Google
-        </Button>
-      </article>
+      <Button variant="outline" type="button" className="mt-8">
+        <GrGoogle className="mr-2 h-4 w-4" />
+        Entrar com o Google
+      </Button>
 
       <div
         className="flex gap-2 items-center justify-center mt-4"
@@ -24,9 +22,9 @@ export default function Login() {
         <Separator className="w-[45%]" />
       </div>
 
-      <article className="mt-4">
+      <div className="mt-4">
         <LoginForm />
-      </article>
+      </div>
     </section>
   )
 }

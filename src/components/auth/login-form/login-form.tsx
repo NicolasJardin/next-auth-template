@@ -75,7 +75,7 @@ export function LoginForm() {
     <Form {...form}>
       <form action={formAction} noValidate className="flex flex-col gap-4">
         <fieldset className="flex flex-col gap-4">
-          <legend className="sr-only">Informações de login</legend>
+          <legend className="sr-only">Campos de login</legend>
           <FormField
             control={form.control}
             name="email"
