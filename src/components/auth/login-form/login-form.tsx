@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
-import { Separator } from '@/components/ui/separator'
 import { useToast } from '@/hooks/use-toast'
 import { loginSchema } from '@/schemas/auth'
 import { login, State } from '@/server-actions/auth/login'
@@ -23,8 +22,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useFormState } from 'react-dom'
 import { FieldPath, useForm } from 'react-hook-form'
-import { FaFacebookF } from 'react-icons/fa'
-import { GrGoogle } from 'react-icons/gr'
 
 export function LoginForm() {
   const [state, formAction] = useFormState<State, FormData>(login, null)
@@ -77,38 +74,40 @@ export function LoginForm() {
   return (
     <Form {...form}>
       <form action={formAction} noValidate className="flex flex-col gap-4">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email*</FormLabel>
-              <FormControl>
-                <Input size={300} type="email" placeholder="Digite seu email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <fieldset className="flex flex-col gap-4">
+          <legend className="sr-only">Informações de login</legend>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email*</FormLabel>
+                <FormControl>
+                  <Input size={300} type="email" placeholder="Digite seu email" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Senha*</FormLabel>
-              <FormControl>
-                <PasswordInput placeholder="Digite sua senha" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Senha*</FormLabel>
+                <FormControl>
+                  <PasswordInput placeholder="Digite sua senha" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </fieldset>
 
-        <Button variant="link" className="w-fit pl-0" type="button">
-          Esqueceu a senha?
+        <Button variant="link" className="pl-0 w-fit" asChild>
+          <Link href="/auth/register">Esqueceu a senha?</Link>
         </Button>
-
         <SubmitButton>Entrar</SubmitButton>
 
         <div className="mt-4 flex gap-2 items-center justify-center">
