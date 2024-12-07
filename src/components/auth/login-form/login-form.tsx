@@ -12,23 +12,17 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/ui/password-input'
-import { useToast } from '@/hooks/use-toast'
+import { useLoginForm } from '@/hooks/auth'
 import { loginSchema } from '@/schemas/auth'
 import { login, State } from '@/server-actions/auth/login'
 import type { LoginFormType } from '@/types/auth'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
 import { useFormState } from 'react-dom'
-import { FieldPath, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 export function LoginForm() {
   const [state, formAction] = useFormState<State, FormData>(login, null)
-
-  const { toast } = useToast()
-
-  const { push } = useRouter()
 
   const form = useForm<LoginFormType>({
     resolver: zodResolver(loginSchema),
@@ -38,38 +32,7 @@ export function LoginForm() {
     }
   })
 
-  const { setError, clearErrors } = form
-
-  useEffect(() => {
-    if (!state) {
-      return
-    }
-
-    clearErrors()
-
-    if (state.status === 'error') {
-      toast({
-        variant: 'destructive',
-        title: 'Ops, ocorreu um erro!',
-        description: state.message
-      })
-
-      state.errors?.forEach(error => {
-        setError(error.path as FieldPath<LoginFormType>, {
-          message: error.message
-        })
-      })
-    }
-
-    if (state.status === 'success') {
-      toast({
-        title: 'Login realizado com sucesso!',
-        description: 'Você foi autenticado com sucesso e agora pode acessar sua conta.'
-      })
-
-      push('/onboarding')
-    }
-  }, [state, setError, clearErrors, toast, push])
+  useLoginForm(state, form)
 
   return (
     <Form {...form}>
