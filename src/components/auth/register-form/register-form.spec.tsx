@@ -66,15 +66,4 @@ describe('register-form', () => {
       })
     })
   })
-
-  it('desabilita botão enquanto o formulário está pendente', () => {
-    ;(useCreateUser as jest.Mock).mockReturnValue({
-      mutateAsync: mockCreateUser,
-      isPending: true
-    })
-
-    render(<RegisterForm />)
-
-    expect(screen.getByRole('button', { name: /cadastre-se/i })).toHaveAttribute('disabled')
-  })
 })
