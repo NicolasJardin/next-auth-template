@@ -7,10 +7,6 @@ jest.mock('@/mutations/users', () => ({
   useCreateUser: jest.fn()
 }))
 
-jest.mock('@/hooks/use-toast', () => ({
-  useToast: jest.fn()
-}))
-
 describe('register-form', () => {
   const mockCreateUser = jest.fn()
 
