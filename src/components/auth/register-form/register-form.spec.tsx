@@ -64,6 +64,9 @@ describe('register-form', () => {
         email: 'johndoe@example.com',
         password: 'Password@123'
       })
+
+      const errors = screen.queryAllByText('Campo de preenchimento obrigatório.')
+      expect(errors).toHaveLength(0)
     })
   })
 })
