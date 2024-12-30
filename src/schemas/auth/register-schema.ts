@@ -1,8 +1,5 @@
+import { passwordRegex } from '@/constants'
 import { z } from 'zod'
-
-const passwordValidation = new RegExp(
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-)
 
 export const registerSchema = z.object({
   name: z.string().min(1, { message: 'Campo de preenchimento obrigatório.' }),
@@ -13,7 +10,7 @@ export const registerSchema = z.object({
   password: z
     .string()
     .min(1, { message: 'Campo de preenchimento obrigatório.' })
-    .regex(passwordValidation, {
+    .regex(passwordRegex, {
       message:
         'Sua senha deve ter pelo menos 8 caracteres, incluindo ao menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial (por exemplo: !, @, #, $).'
     })

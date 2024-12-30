@@ -69,7 +69,7 @@ export function LoginForm() {
         </fieldset>
 
         <Button variant="link" className="pl-0 w-fit" asChild>
-          <Link href="/auth/register">Esqueceu a senha?</Link>
+          <Link href="/auth/forgot-password">Esqueceu a senha?</Link>
         </Button>
         <SubmitButton>Entrar</SubmitButton>
 
